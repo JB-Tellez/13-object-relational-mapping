@@ -10,5 +10,5 @@ app.use(router);
 module.exports = {
 
   start: port => app.listen(port, console.log('Listening on PORT', port)),
-  server: app
-}
+  server: app,
+};
