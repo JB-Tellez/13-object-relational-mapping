@@ -3,10 +3,18 @@ import {
 } from 'mockgoose';
 import mongoose from 'mongoose';
 
+
+jest.setTimeout(30000);
+
 const mockgoose = new Mockgoose(mongoose);
 
 import Singer from '../../../src/models/singers.js';
 
+afterAll(() => {
+
+  mongoose.connection.close();
+  console.log('close mongoose connection');
+});
 describe('app module', () => {
 
   beforeAll((done) => {

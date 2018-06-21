@@ -12,6 +12,10 @@ const mockgoose = new Mockgoose(mongoose);
 
 const API_URL = '/api/v1/singers';
 
+afterAll(() => {
+  mongoose.connection.close();
+});
+
 describe('api module', () => {
 
   beforeAll((done) => {

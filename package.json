@@ -7,7 +7,7 @@
     "start": "node index.js",
     "watch": "nodemon index.js",
     "test-watch": "jest --watchAll",
-    "test": "jest --detectOpenHandles --forceExit",
+    "test": "jest --detectOpenHandles --runInBand --forceExit",
     "lint": "eslint **/*.js"
   },
   "keywords": [],
