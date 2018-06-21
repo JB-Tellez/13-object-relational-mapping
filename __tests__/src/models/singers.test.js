@@ -21,6 +21,9 @@ describe('app module', () => {
     mockgoose.helper.reset().then(done);
   });
 
+  it('Model should exist', () => {
+    expect(Singer).toBeDefined();
+  });
 
   describe('Singer', () => {
 

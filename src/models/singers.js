@@ -5,4 +5,6 @@ const schema = Schema({
   rank: {type: Number, required:true},
 });
 
-export default mongoose.model('Singer', schema);
+const skipInit = process.env.NODE_ENV === 'test';
+
+export default mongoose.model('Singer', schema, 'singers', skipInit);
