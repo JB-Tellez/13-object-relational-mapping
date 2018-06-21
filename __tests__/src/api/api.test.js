@@ -16,7 +16,7 @@ describe('api module', () => {
 
   beforeAll((done) => {
     mockgoose.prepareStorage().then(() => {
-      mongoose.connect('mongodb://localhost/singers').then(() => {
+      mongoose.connect('mongodb://127.0.0.1/singers').then(() => {
         done();
       });
     });
