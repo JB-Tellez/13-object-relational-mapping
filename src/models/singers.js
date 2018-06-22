@@ -1,10 +1,9 @@
 import mongoose, {Schema} from 'mongoose';
 
-const schema = Schema({
+const schema = new Schema({
   name: {type: String, required:true},
   rank: {type: Number, required:true},
+  band: {type: Schema.Types.ObjectId, ref: 'Band' },
 });
 
-const skipInit = process.env.NODE_ENV === 'test';
-
-export default mongoose.model('Singer', schema, 'singers', skipInit);
+export default mongoose.model('Singer', schema);
