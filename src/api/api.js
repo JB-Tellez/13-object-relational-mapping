@@ -4,10 +4,21 @@ import singers from '../models/singers.js';
 
 const router = express.Router();
 
-router.get('/api/v1/singers', (req, res) => {
+const API_URL = '/api/v1/singers';
+
+router.get(API_URL, (req, res) => {
   singers
     .find()
     .then(foundSingers => res.send(foundSingers))
+    .catch(err => res.send(err));
+});
+
+router.post(API_URL, express.json(), (req, res) => {
+
+  // res.send(req.body);
+  singers
+    .create(req.body)
+    .then(singer => res.send(singer))
     .catch(err => res.send(err));
 });
 

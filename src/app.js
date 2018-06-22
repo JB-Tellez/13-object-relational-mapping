@@ -1,32 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 'use strict';
 
 import express from 'express';
@@ -39,5 +10,6 @@ app.use(router);
 module.exports = {
 
   start: port => app.listen(port, console.log('Listening on PORT', port)),
+  stop: () => app.close(),
   server: app,
 };

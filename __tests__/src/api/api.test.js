@@ -1,27 +1,20 @@
-
 import supertest from 'supertest';
-import {server} from '../../../src/app.js';
+import {
+  server,
+} from '../../../src/app.js';
 import modelsHelper from '../models/models.helper.js';
 
 const mockRequest = supertest(server);
 
 const API_URL = '/api/v1/singers';
 
-afterAll(() => {
-  modelsHelper.afterAll();
-});
+describe('api module', () => {
 
-xdescribe('api module', () => {
+  afterAll(modelsHelper.afterAll);
+  beforeAll(modelsHelper.beforeAll);
+  afterEach(modelsHelper.afterEach);
 
-  beforeAll((done) => {
-    modelsHelper.beforeAll(done);
-  });
-
-  afterEach((done) => {
-    modelsHelper.afterEach(done);
-  });
-
-  xit('mockRequest should exist', () => {
+  it('mockRequest should exist', () => {
     expect(mockRequest).toBeDefined();
   });
 
@@ -32,31 +25,42 @@ xdescribe('api module', () => {
     }).catch(err => {
       fail(err);
     });
-  
+
   });
 
-  xit('should post a singer', () => {
+  it('should post a singer', () => {
 
-    const singerObj = {name: 'Roy Orbison', rank: 8};
+    const singerObj = {
+      name: 'Roy Orbison',
+      rank: 8,
+    };
 
     return mockRequest
       .post(API_URL)
       .send(singerObj)
       .then(results => {
-        const singer = JSON.parse(results.text);
-        expect(singer.name).toBe(singerObj.name);
-        expect(singer._id).toBeDefined();
+
+        try {
+          const singer = JSON.parse(results.text);
+          expect(singer.name).toBe(singerObj.name);
+          expect(singer._id).toBeDefined();
+        } catch (error) {
+          fail(err);
+        }
       }).catch(err => fail(err));
   });
 
-  xit('should add to all singers after a post', () => {
+  it('should add to all singers after a post', () => {
 
-    const singerObj = {name: 'Etta James', rank: 9};
+    const singerObj = {
+      name: 'Etta James',
+      rank: 9,
+    };
 
     return mockRequest
       .post(API_URL)
       .send(singerObj)
-      .then(results => {
+      .then(() => {
 
         return mockRequest
           .get(API_URL)
@@ -67,6 +71,6 @@ xdescribe('api module', () => {
 
   });
 
-  xit('more to do', () => {});
+  xit('to do - delete, error codes, etc.', () => {});
 
 });
