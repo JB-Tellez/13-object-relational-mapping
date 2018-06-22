@@ -7,7 +7,9 @@ it('whatevs', () => {
   expect('test only here til I figure out easy way to ignore this file');
 });
 
-jest.setTimeout(30000);
+// WARNING: Give a LONG timeout because Travis runs slow
+// due to Mongo
+jest.setTimeout(60000);
 
 const mockgoose = new Mockgoose(mongoose);
 
