@@ -16,9 +16,13 @@ const mockgoose = new Mockgoose(mongoose);
 console.log('models.helper FTW');
 
 export default {
-  afterAll: () => {
-    mongoose.connection.close();
-    console.log('close mongoose connection');
+  afterAll: (done) => {
+    mongoose.connection.close().then(() => {
+
+      console.log('close mongoose connection');
+
+      done();
+    });
   },
 
   beforeAll: done => {

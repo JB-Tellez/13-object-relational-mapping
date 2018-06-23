@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon index.js",
-    "test": "jest --forceExit",
+    "test": "jest",
     "test-watch": "jest --watchAll",
     "test-fancy": "jest --detectOpenHandles --runInBand --forceExit",
     "test-force": "jest --forceExit",
