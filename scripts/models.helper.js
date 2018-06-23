@@ -11,22 +11,29 @@ const mockgoose = new Mockgoose(mongoose);
 
 console.log('models.helper FTW');
 
-
-
 export default {
-  afterAll: async (done) => {
-    try {
-      await mongoose.disconnect();
-      console.log('mongoose disconnected');
+  afterAll: (done) => {
+
+
+    mongoose.disconnect().then(() => {
+      console.log('disconnected');
       done();
-    } catch (error) {
-      console.log(`
-        You did something wrong silly!
-        ${error}
-      `);
+    }).catch((err) => {
+      console.error(err);
       done();
-      throw error;
-    }
+    });
+    // try {
+    //   await mongoose.disconnect();
+    //   console.log('mongoose disconnected');
+    //   done();
+    // } catch (error) {
+    //   console.log(`
+    //     You did something wrong silly!
+    //     ${error}
+    //   `);
+    //   done();
+    //   throw error;
+    // }
   },
 
   beforeAll: done => {
