@@ -3,10 +3,6 @@ import {
 } from 'mockgoose';
 import mongoose from 'mongoose';
 
-it('whatevs', () => {
-  expect('test only here til I figure out easy way to ignore this file');
-});
-
 // WARNING: Give a LONG timeout because Travis runs slow
 // due to Mongo
 jest.setTimeout(60000);
@@ -15,14 +11,22 @@ const mockgoose = new Mockgoose(mongoose);
 
 console.log('models.helper FTW');
 
+
+
 export default {
-  afterAll: (done) => {
-    mongoose.connection.close().then(() => {
-
-      console.log('close mongoose connection');
-
+  afterAll: async (done) => {
+    try {
+      await mongoose.disconnect();
+      console.log('mongoose disconnected');
       done();
-    });
+    } catch (error) {
+      console.log(`
+        You did something wrong silly!
+        ${error}
+      `);
+      done();
+      throw error;
+    }
   },
 
   beforeAll: done => {

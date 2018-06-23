@@ -1,7 +1,7 @@
 
 import Band from '../../../src/models/bands.js';
 import Singer from '../../../src/models/singers.js';
-import modelsHelper from './models.helper';
+import modelsHelper from '../../../scripts/models.helper.js';
 
 describe('band', () => {
 

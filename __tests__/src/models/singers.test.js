@@ -1,6 +1,6 @@
 import Singer from '../../../src/models/singers.js';
 import Band from '../../../src/models/bands.js';
-import modelsHelper from './models.helper';
+import modelsHelper from '../../../scripts/models.helper.js';
 
 describe('singer model', () => {
 

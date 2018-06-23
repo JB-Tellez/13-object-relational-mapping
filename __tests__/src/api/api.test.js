@@ -2,7 +2,7 @@ import supertest from 'supertest';
 import {
   server,
 } from '../../../src/app.js';
-import modelsHelper from '../models/models.helper.js';
+import modelsHelper from '../../../scripts/models.helper.js';
 
 const mockRequest = supertest(server);
 
