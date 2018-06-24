@@ -1,7 +1,7 @@
 require('dotenv').config();
 import {
   Mockgoose,
-} from 'mockgoose';
+} from 'mockgoose-fix';
 import mongoose from 'mongoose';
 
 // WARNING: Give a LONG timeout because Travis runs slow
