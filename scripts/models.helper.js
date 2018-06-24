@@ -1,3 +1,4 @@
+require('dotenv').config();
 import {
   Mockgoose,
 } from 'mockgoose';
@@ -22,23 +23,11 @@ export default {
       console.error(err);
       done();
     });
-    // try {
-    //   await mongoose.disconnect();
-    //   console.log('mongoose disconnected');
-    //   done();
-    // } catch (error) {
-    //   console.log(`
-    //     You did something wrong silly!
-    //     ${error}
-    //   `);
-    //   done();
-    //   throw error;
-    // }
   },
 
   beforeAll: done => {
     mockgoose.prepareStorage().then(() => {
-      mongoose.connect('mongodb://127.0.0.1/singers').then(() => {
+      mongoose.connect(process.env.MONGODB_URI).then(() => {
         done();
       });
     });
